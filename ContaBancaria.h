@@ -3,13 +3,12 @@
 
 class ContaBancaria{
 public:
-    ContaBancaria();
-    ContaBancaria(int,double);
-    virtual void sacar(double);
-    virtual void depositar(double);
-    void transferir(double,ContaBancaria&);
-    int get_numero();
-    double get_saldo();
+    ContaBancaria(int numero, double saldo);
+    virtual void Sacar(double valor);
+    virtual void Depositar(double valor);
+    void Transferir(double valor, ContaBancaria &contaDestino);
+    int getNumero() const;
+    double getSaldo() const;
     bool operator==(const ContaBancaria&) const;
 protected:
     int numero;
