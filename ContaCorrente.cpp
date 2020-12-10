@@ -3,21 +3,24 @@
 #include "Imprimivel.h"
 #include <iostream>
 
-ContaCorrente::ContaCorrente():ContaBancaria(){};
+ContaCorrente::ContaCorrente(int numero_, double saldo_):
+  ContaBancaria("Conta Corrente", numero_, saldo_),
+  taxaDeOperacao(1){};
 
-ContaCorrente::ContaCorrente(int a,double b):ContaBancaria(a,b){};
+void ContaCorrente::sacar(double valor){
+  saldo -= valor;
+  saldo -= taxaDeOperacao;
 
-double taxaDeOperacao = 1;
-
-void ContaCorrente::sacar(double a){
-    saldo-= a;
-    saldo-= taxaDeOperacao;
+  std::cout << std::endl;
+  std::cout << "sacou da corrente" << std::endl;
+  std::cout << std::endl;
 }
-void ContaCorrente::depositar(double b){
-    saldo+= b;
-    saldo-= taxaDeOperacao;
-}
-void ContaCorrente::mostrarDados() const{
-    std::cout << "O número é:" << numero << std::endl;
-    std::cout << "O saldo é:" << saldo << std::endl;
+
+void ContaCorrente::depositar(double valor){
+  saldo += valor;
+  saldo -= taxaDeOperacao;
+
+  std::cout << std::endl;
+  std::cout << "depositou na corrente" << std::endl;
+  std::cout << std::endl;
 }

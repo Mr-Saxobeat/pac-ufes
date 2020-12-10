@@ -8,7 +8,6 @@ class Executavel{
 public:
     Executavel();
     void executar();
-private:
 };
 
 #endif

@@ -6,15 +6,15 @@
 Executavel::Executavel(){}
 
 void Executavel::executar(){
-    ContaCorrente conta1(123,0);
-    conta1.depositar(100);
-    conta1.sacar(100);
+    ContaCorrente cCorrente(123, 0);
+    cCorrente.depositar(100);
+    cCorrente.sacar(50);
 
-    ContaPoupanca conta2(456,0);
-    conta2.depositar(100);
-    conta2.sacar(101);
+    ContaPoupanca cPoupanca(456, 0);
+    cPoupanca.depositar(100);
+    cPoupanca.sacar(200);
 
-    Relatorio dados;
-    dados.gerarRelatorio(conta1);
-    dados.gerarRelatorio(conta2);
+    Relatorio relatorio;
+    relatorio.gerarRelatorio(cCorrente);
+    relatorio.gerarRelatorio(cPoupanca);
 }

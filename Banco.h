@@ -4,12 +4,15 @@
 #include "Imprimivel.h"
 #include <vector>
 
-class Banco{
+class Banco: public Imprimivel{
 public:
     Banco();
-    void inserir(ContaBancaria&);
-    void deletar(ContaBancaria&);
-    ContaBancaria procurarConta(int);
+    void inserir(ContaBancaria &conta);
+    void deletar(ContaBancaria &conta);
+    ContaBancaria* procurarConta(int numeroDaConta);
+    void mostrarDados() const;
+private:
+  std::vector <ContaBancaria> contas;
 };
 
 #endif

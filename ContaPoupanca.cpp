@@ -4,17 +4,18 @@
 #include <math.h>
 #include <iostream>
 
-ContaPoupanca::ContaPoupanca():ContaBancaria(){};
+ContaPoupanca::ContaPoupanca(int numero_, double saldo_):
+  ContaBancaria("Conta Poupança", numero_, saldo_),
+  limite(100){};
 
-ContaPoupanca::ContaPoupanca(int a,double b):ContaBancaria(a,b){}
+void ContaPoupanca::sacar(double valor){
+    if (abs(saldo - valor) <= limite){
+      saldo -= valor;
+    } else {
+      std::cout << "Não é possível efetuar o saque. Limite excedido.\n";
+    }
 
-double limite = 100;
-
-void ContaPoupanca::sacar(double a){
-    if(abs(saldo-a)<=limite) saldo-=a;
-    else std::cout << "Não é possível efetuar o saque\n";
-}
-void ContaPoupanca::mostrarDados() const{
-    std::cout << "O número é:" << numero << std::endl;
-    std::cout << "O saldo é:" << saldo << std::endl;
+    std::cout << std::endl;
+    std::cout << "sacou da poupança" << std::endl;
+    std::cout << std::endl;
 }

@@ -4,8 +4,7 @@
 
 class Relatorio{
 public:
-    void gerarRelatorio(Imprimivel&);
-private:
+    void gerarRelatorio(Imprimivel& imp);
 };
 
 #endif
