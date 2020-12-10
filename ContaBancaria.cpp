@@ -1,26 +1,28 @@
 #include "ContaBancaria.h"
 
-ContaBancaria::ContaBancaria():numero(0),saldo(0){};
+ContaBancaria::ContaBancaria(int numero_, double saldo_ = 0): numero(numero_), saldo(saldo_){};
 
-ContaBancaria::ContaBancaria(int a,double b):numero(a),saldo(b){};
-
-void ContaBancaria::sacar(double a){
-    saldo-= a;
+void ContaBancaria::Sacar(double valor_){
+    saldo -= valor_;
 }
 
-void ContaBancaria::depositar(double b){
-    saldo+= b;
+void ContaBancaria::Depositar(double valor_){
+    saldo += valor_;
 }
-void ContaBancaria::transferir(double valor,ContaBancaria& conta){
-    sacar(valor);
-    conta.depositar(valor);
+
+void ContaBancaria::Transferir(double valor_, ContaBancaria& contaDestino_){
+    Sacar(valor_);
+    contaDestino_.Depositar(valor_);
 }
-int ContaBancaria::get_numero(){
+
+int ContaBancaria::getNumero() const{
     return numero;
 }
-double ContaBancaria::get_saldo(){
+
+double ContaBancaria::getSaldo() const{
     return saldo;
 }
+
 bool ContaBancaria::operator==(const ContaBancaria& ref1) const{
     return ref1.numero == this->numero;
 };
