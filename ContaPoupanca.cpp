@@ -8,14 +8,11 @@ ContaPoupanca::ContaPoupanca(int numero_, double saldo_):
   ContaBancaria("Conta Poupança", numero_, saldo_),
   limite(100){};
 
-void ContaPoupanca::sacar(double valor){
-    if (abs(saldo - valor) <= limite){
+bool ContaPoupanca::sacar(double valor){
+    if(valor > 0 && abs(saldo - valor) <= limite){
       saldo -= valor;
+      return true;
     } else {
-      std::cout << "Não é possível efetuar o saque. Limite excedido.\n";
+      return false;
     }
-
-    std::cout << std::endl;
-    std::cout << "sacou da poupança" << std::endl;
-    std::cout << std::endl;
 }

@@ -7,8 +7,8 @@
 class ContaCorrente: public ContaBancaria{
 public:
   ContaCorrente(int numero, double saldo);
-  void sacar(double valor);
-  void depositar(double valor);
+  bool sacar(double valor);
+  bool depositar(double valor);
 private:
   double taxaDeOperacao;
 };

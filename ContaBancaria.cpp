@@ -8,29 +8,32 @@ ContaBancaria::ContaBancaria(std::string tipo_, int numero_, double saldo_ = 0):
   saldo(saldo_)
   {};
 
-void ContaBancaria::sacar(double valor){
-    if (saldo >= valor){
+bool ContaBancaria::sacar(double valor){
+    if (valor > 0 && saldo >= valor){
       saldo -= valor;
+      return true;
     } else {
-      std::cout << "Saldo insuficiente. Saque não realizado." << std::endl;
+      return false;
     }
-
-    std::cout << std::endl;
-    std::cout << "sacou na bancária" << std::endl;
-    std::cout << std::endl;
 }
 
-void ContaBancaria::depositar(double valor){
-    saldo += valor;
-
-    std::cout << std::endl;
-    std::cout << "depositou na bancária" << std::endl;
-    std::cout << std::endl;
+bool ContaBancaria::depositar(double valor){
+    if(valor > 0){
+      saldo += valor;
+      return true;
+    } else {
+      return false;
+    }
 }
 
-void ContaBancaria::transferir(double valor, ContaBancaria& contaDestino){
-    sacar(valor);
-    contaDestino.depositar(valor);
+bool ContaBancaria::transferir(double valor, ContaBancaria& contaDestino){
+    if(valor > 0){
+        sacar(valor);
+        contaDestino.depositar(valor);
+        return true;
+    } else {
+      return false;
+    }
 }
 
 int ContaBancaria::getNumero() const{
@@ -45,16 +48,16 @@ std::string ContaBancaria::getTipo() const{
   return tipo;
 }
 
-bool ContaBancaria::operator==(const ContaBancaria& ref1) const{
-    return ref1.numero == this->numero;
+bool ContaBancaria::operator==(const ContaBancaria& conta2) const{
+    return this->numero == conta2.numero;
 };
 
 void ContaBancaria::mostrarDados() const{
   std::cout << std::endl;
-  std::cout << "-------------------------------------------------------------------------" << std::endl;
-  std::cout << "| Tipo: " << getTipo() << std::endl;
+  std::cout << "--------------------------------------------------------------" << std::endl;
+  std::cout << "| " << getTipo() << std::endl;
   std::cout << "| Número: " << getNumero() << std::endl;
-  std::cout << "| Saldo: " << getSaldo() << std::endl;
-  std::cout << "-------------------------------------------------------------------------" << std::endl;
+  std::cout << "| Saldo: R$ " << getSaldo() << std::endl;
+  std::cout << "--------------------------------------------------------------" << std::endl;
   std::cout << std::endl;
 }

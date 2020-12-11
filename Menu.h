@@ -6,9 +6,12 @@ class Menu{
 public:
   Menu();
   void mostrarMenu();
-  void criarConta();
-  void selecionarConta();
-  void removerConta();
+  void menu_criarConta();
+  void menu_selecionarConta();
+  void menu_contaSelecionada(ContaBancaria* p_contaSelecionada);
+  ContaBancaria* criarConta(int tipo, int numero, double saldo);
+  bool removerConta();
+
 private:
   Banco banco;
 };

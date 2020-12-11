@@ -6,10 +6,9 @@
 
 class ContaPoupanca: public ContaBancaria{
 public:
-    ContaPoupanca(int numero, double saldo);
-    void sacar(double valor);
+  ContaPoupanca(int numero, double saldo);
+  bool sacar(double valor);
 private:
-  const std::string tipo = "Conta Poupança";
   double limite;
 };
 
